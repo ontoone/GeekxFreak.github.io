@@ -6,25 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>初识RxJava | Mansoul的小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言最近发现RxJava挺火的，就尝试了去了解下，发现用起来很是方便和简洁，便开始学习RxJava之路。当然路很长，此篇也是作为个人的学习笔记！
-RxJava 简介RxJava 是什么
-一个词：异步，简洁。
-RxJava 在 GitHub 主页上的自我介绍是 “a library for composing asynchronous andevent-based programs using ob">
+  <meta name="description" content="前言最近发现RxJava挺火的，就尝试了去了解下，发现用起来很是方便和简洁，便开始学习RxJava之路。当然路很长，此篇也是作为个人的学习笔记！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识RxJava">
 <meta property="og:url" content="http://yoursite.com/2016/06/01/RxJava/index.html">
 <meta property="og:site_name" content="Mansoul的小站">
-<meta property="og:description" content="前言最近发现RxJava挺火的，就尝试了去了解下，发现用起来很是方便和简洁，便开始学习RxJava之路。当然路很长，此篇也是作为个人的学习笔记！
-RxJava 简介RxJava 是什么
-一个词：异步，简洁。
-RxJava 在 GitHub 主页上的自我介绍是 “a library for composing asynchronous andevent-based programs using ob">
-<meta property="og:updated_time" content="2016-06-01T07:39:25.000Z">
+<meta property="og:description" content="前言最近发现RxJava挺火的，就尝试了去了解下，发现用起来很是方便和简洁，便开始学习RxJava之路。当然路很长，此篇也是作为个人的学习笔记！">
+<meta property="og:updated_time" content="2016-06-01T07:57:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识RxJava">
-<meta name="twitter:description" content="前言最近发现RxJava挺火的，就尝试了去了解下，发现用起来很是方便和简洁，便开始学习RxJava之路。当然路很长，此篇也是作为个人的学习笔记！
-RxJava 简介RxJava 是什么
-一个词：异步，简洁。
-RxJava 在 GitHub 主页上的自我介绍是 “a library for composing asynchronous andevent-based programs using ob">
+<meta name="twitter:description" content="前言最近发现RxJava挺火的，就尝试了去了解下，发现用起来很是方便和简洁，便开始学习RxJava之路。当然路很长，此篇也是作为个人的学习笔记！">
   
     <link rel="alternative" href="/atom.xml" title="Mansoul的小站" type="application/atom+xml">
   
@@ -248,6 +239,7 @@ RxJava 在 GitHub 主页上的自我介绍是 “a library for composing asynchr
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近发现RxJava挺火的，就尝试了去了解下，发现用起来很是方便和简洁，便开始学习RxJava之路。当然路很长，此篇也是作为个人的学习笔记！</p>
+<a id="more"></a>
 <h2 id="RxJava-简介"><a href="#RxJava-简介" class="headerlink" title="RxJava 简介"></a>RxJava 简介</h2><h3 id="RxJava-是什么"><a href="#RxJava-是什么" class="headerlink" title="RxJava 是什么"></a>RxJava 是什么</h3><blockquote>
 <p>一个词：异步，简洁。</p>
 <p>RxJava 在 GitHub 主页上的自我介绍是 “a library for composing asynchronous and<br>event-based programs using observable sequences for the Java VM”（一个在 Java<br>VM 上使用可观测的序列来组成异步的、基于事件的程序的库）。这就是 RxJava ，概括得非常精准。<br>然而，对于初学者来说，这太难看懂了。因为它是一个『总结』，而初学者更需要一个『引言』。<br>其实， RxJava 的本质可以压缩为异步这一个词。说到根上，它就是一个实现异步操作的库，而别的<br>语都是基于这之上的。</p>
