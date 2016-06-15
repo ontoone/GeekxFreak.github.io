@@ -116,7 +116,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Volley/" style="font-size: 10px;">Volley</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/java/" style="font-size: 10px;">java</a>
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Volley/" style="font-size: 10px;">Volley</a> <a href="/tags/hello-world/" style="font-size: 10px;">hello world</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
 					</div>
 				</section>
 				
@@ -425,9 +425,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line">        ViewHolder holder;</span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//1, 加载布局文件</span></span><br><span class="line">            convertView = UIUtils.inflate(R.layout.list_item);</span><br><span class="line">            holder = <span class="keyword">new</span> ViewHolder();</span><br><span class="line">            <span class="comment">//2, 初始化控件 findViewById</span></span><br><span class="line">            holder.tv = (TextView) convertView.findViewById(R.id.tv);</span><br><span class="line">            <span class="comment">//3, 打tag</span></span><br><span class="line">            convertView.setTag(holder);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            holder = (ViewHolder) convertView.getTag();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//4, 根据数据来刷新界面</span></span><br><span class="line">        String content = getItem(position);</span><br><span class="line">        holder.tv.setText(content);</span><br><span class="line">        <span class="keyword">return</span> convertView;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+        <p>第一次搭建个人博客，按照惯例。Hello world！其实很早就有想法搭建这样一个博客，完全属于自己的空间。由于种种原因(懒…)，一直拖延。博客基于Hexo，下面会介绍下搭建的完整过程。</p>
       
     </div>
     
@@ -435,7 +433,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hello-world/">hello world</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 	</div>
 
       

@@ -6,19 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>Hello World | Mansoul的小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="第一次搭建个人博客，按照惯例。Hello world！其实很早就有想法搭建这样一个博客，完全属于自己的空间。由于种种原因(懒…)，一直拖延。博客基于Hexo，下面会介绍下搭建的完整过程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hello World">
 <meta property="og:url" content="http://yoursite.com/2016/05/27/hello-world/index.html">
 <meta property="og:site_name" content="Mansoul的小站">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-06-14T11:24:20.000Z">
+<meta property="og:description" content="第一次搭建个人博客，按照惯例。Hello world！其实很早就有想法搭建这样一个博客，完全属于自己的空间。由于种种原因(懒…)，一直拖延。博客基于Hexo，下面会介绍下搭建的完整过程。">
+<meta property="og:updated_time" content="2016-06-15T05:00:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:description" content="第一次搭建个人博客，按照惯例。Hello world！其实很早就有想法搭建这样一个博客，完全属于自己的空间。由于种种原因(懒…)，一直拖延。博客基于Hexo，下面会介绍下搭建的完整过程。">
   
     <link rel="alternative" href="/atom.xml" title="Mansoul的小站" type="application/atom+xml">
   
@@ -120,7 +117,7 @@ Quick">
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Volley/" style="font-size: 10px;">Volley</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/java/" style="font-size: 10px;">java</a>
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Volley/" style="font-size: 10px;">Volley</a> <a href="/tags/hello-world/" style="font-size: 10px;">hello world</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
 					</div>
 				</section>
 				
@@ -230,7 +227,7 @@ Quick">
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/">android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hello-world/">hello world</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 	</div>
 
         
@@ -241,16 +238,134 @@ Quick">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> View <span class="title">getView</span><span class="params">(<span class="keyword">int</span> position, View convertView, ViewGroup parent)</span> </span>&#123;</span><br><span class="line">        ViewHolder holder;</span><br><span class="line">        <span class="keyword">if</span> (convertView == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">//1, 加载布局文件</span></span><br><span class="line">            convertView = UIUtils.inflate(R.layout.list_item);</span><br><span class="line">            holder = <span class="keyword">new</span> ViewHolder();</span><br><span class="line">            <span class="comment">//2, 初始化控件 findViewById</span></span><br><span class="line">            holder.tv = (TextView) convertView.findViewById(R.id.tv);</span><br><span class="line">            <span class="comment">//3, 打tag</span></span><br><span class="line">            convertView.setTag(holder);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            holder = (ViewHolder) convertView.getTag();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//4, 根据数据来刷新界面</span></span><br><span class="line">        String content = getItem(position);</span><br><span class="line">        holder.tv.setText(content);</span><br><span class="line">        <span class="keyword">return</span> convertView;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+        <p>第一次搭建个人博客，按照惯例。Hello world！其实很早就有想法搭建这样一个博客，完全属于自己的空间。由于种种原因(懒…)，一直拖延。博客基于Hexo，下面会介绍下搭建的完整过程。</p>
 <a id="more"></a>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<h3 id="什么是-Hexo-？"><a href="#什么是-Hexo-？" class="headerlink" title="什么是 Hexo ？"></a>什么是 Hexo ？</h3><p>Hexo 是一个快速、简洁且高效的博客框架。使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。接下来就是用Hexo搭建博客的过程, hexo.io/zh-cn/ 这是 Hexo 的中文官网(注意可能有墙),上面有文档查看、主题下载。由于我用的是Mac,所以本文是基于 OS X 操作系统的,用 Hexo+GitHub 搭建个人博客(win端步骤大同小异)。首先看下完整的流程：</p>
+<ol>
+<li><p>首先 hexo 是基于 node.js 的，所以必须安装 node.js</p>
+</li>
+<li><p>安装 node.js 方法很多，可以选择直接从官网下载</p>
+</li>
+<li><p>hexo 提交部署 GitHub 需要使用 git 工具，所以需要安装 git，我安装了 Xcode，Xcode自带了git</p>
+</li>
+<li><p>整理一下安装顺序（node.js –&gt; hexo –&gt; git）</p>
+</li>
+</ol>
+<p><strong>下载安装Node.js</strong></p>
+<ul>
+<li>直接从<a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js 官网</a>下载安装即可</li>
+</ul>
+<p><strong>安装Hexo</strong></p>
+<ol>
+<li><p>全局安装Hexo</p>
+<pre><code>npm install -g hexo
+</code></pre><p>如果遇到错误，应该是被墙堵住了，那就要这样安装</p>
+<pre><code>npm install -g hexo-cli --no-optional
+</code></pre></li>
+<li><p>创建blog文件夹(这个文件夹即是你以后写blog的文件夹，默认是在Mac的个人这个文件夹下创建)</p>
+<pre><code>hexo init blog
+</code></pre></li>
+<li><p>进入blog文件夹</p>
+<pre><code>cd blog    
+</code></pre></li>
+<li><p>安装Hexo依赖包</p>
+<pre><code>npm install
+</code></pre></li>
+<li><p>运行服务器（默认地址为  <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>在浏览器打开就可以预览到默认主题的博客首页啦）</p>
+<pre><code>hexo server（ 缩写是 hexo s ）
+</code></pre><p> 注意：</p>
+<ul>
+<li><p>如果遇到因为权限问题报错，在命令最前面加 -sudo</p>
+</li>
+<li><p>这里不需要运行 hexo g 指令，我们打开访问的页面是node.js动态生成的，也就是本地网页。</p>
+</li>
+<li><p>全局安装Hexo</p>
+<pre><code>npm install -g hexo
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<p><strong>安装 Git</strong></p>
+<p>我安装了Xcode，而Xcode自带git。当然也可通过其他方式，具体可以自行百度。</p>
+<h3 id="正式搭建博客"><a href="#正式搭建博客" class="headerlink" title="正式搭建博客"></a>正式搭建博客</h3><p>需要的环境都已准备就绪，接下来就开始了今天的重点，正式用 Hexo+GitHub搭建个人博客</p>
+<p>####1. 先注册一个github账号以及创建一个仓库用来存放博客文件才可以进行以下的配置</p>
+<p>这个就没什么好说的啦，简单操作。</p>
+<p>####2. 配置Git</p>
+<ol>
+<li><p>检查SSH keys是否存在</p>
+<pre><code>cd ~/.ssh
+</code></pre><p> 如果显示“No such file or directory”，跳到第3步，否则第2步。</p>
+</li>
+<li><p>备份和移除原来的SSh key设置(因为已经存在key文件，所以需要备份旧的数据并删除)</p>
+<p> 在相应路径下（~/.ssh/id_rsa.pub）找到id_rsa和id_rsa.pub两个文件,剪切到别的地方备份好。</p>
+</li>
+<li><p>生成新的SSH Key(注意将your_email@example.com换成自己注册Github的邮箱地址。后面只需要默认设置就好，当需要输入文件名的时候，敲回车键就好。)</p>
+<pre><code>$ ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
+</code></pre><p> 接着系统会让你输入密码</p>
+<pre><code>Enter passphrase (empty for no passphrase):&lt;输入密码&gt;
+Enter same passphrase again:&lt;再次输入密码&gt; 
+</code></pre><p> 然后就默认会在相应路径下（~/.ssh/id_rsa.pub）生成id_rsa和id_rsa.pub两个文件，找到id_rsa.pub文件，用文本编辑器打开，复制出来。</p>
+<p> 登陆github，点击右上角的 Account—&gt;Settings—&gt;SSH Public keys —&gt; add another public keys<br>把刚刚复制的SSH Key到里面（key文本框中），点击 add key 就ok了。</p>
+<p> 最后我们来测试一下SSH Key是不是配置好了    </p>
+<pre><code>ssh -T git@github.com
+</code></pre><p> 如果是这样的：</p>
+<pre><code>The authenticity of host &apos;github.com (207.97.227.239)&apos; can&apos;t be established.
+RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+Are you sure you want to continue connecting (yes/no)?
+</code></pre><p> 输入yes 便会看到</p>
+<pre><code>Hi &lt;em&gt;username&lt;/em&gt;! You&apos;ve successfully authenticated, but GitHub does not provide shell access.
+</code></pre><p> 到这里只是能通过SSH Key链接github，但是还没完，为了通过git来提交博客的文章，我们还需要配置好git的账号</p>
+<pre><code>git config --global user.name &quot;你的github名字&quot;
+git config --global user.email &quot;你注册github的邮箱&quot;
+</code></pre><p> 到这里才算是真正配置好Git了，下面就可以开始配置自己的博客了。</p>
+</li>
+</ol>
+<p>####3. 配置博客</p>
+<p><strong>注意：在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错，切记 切记</strong></p>
+<p>本地的blog文件夹下内容为：</p>
+<pre><code>_config.yml    
+db.json 
+node_modules 
+package.json
+scaffolds
+source
+themes
+</code></pre><ul>
+<li><p>首先，把github部署为博客的仓库。</p>
+<ol>
+<li><p>打开blog文件夹下的_config.yml，往下滑到最后，修改成下面这样：</p>
+<pre><code>deploy:
+    type: git
+    repository: https://github.com/mansoul1994/mansoul1994.github.io.git
+    branch: master
+</code></pre></li>
+<li><p>在blog文件夹目录下执行生成静态页面命令：</p>
+<pre><code>hexo generate （或者：hexo g）
+</code></pre><p> 此时若出现如下报错：</p>
+<pre><code>ERROR Local hexo not found in ~/blog
+ERROR Try runing: &apos;npm install hexo --save&apos;
+</code></pre><p> 则执行如下命令：</p>
+<pre><code>npm install hexo --save
+</code></pre><p> 若无报错，自行忽略此步骤。</p>
+</li>
+<li><p>再执行配置命令：</p>
+<pre><code>hexo deploy  （或者：hexo d）
+</code></pre><p> 注意：若执行命令hexo deploy仍然报错：无法连接git，则执行如下命令来安装hexo-deployer-git，<br> 安装完应该出现在node_modules文件夹下</p>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre><p> 然后再次执行hexo generate和hexo deploy命令，在浏览器中打开网址<a href="http://mansoul1994.github.io/" target="_blank" rel="external">http://mansoul1994.github.io/</a>  能看到和<a href="http://localhost:4000时一样的页面。便说明博客搭建成功！" target="_blank" rel="external">http://localhost:4000时一样的页面。便说明博客搭建成功！</a></p>
+</li>
+</ol>
+</li>
+</ul>
+<p>###最后<br>感谢网络上搭建博客分享他们经验的人！</p>
+<ol>
+<li><p>如何搭建一个独立博客——简明Github Pages与Hexo教程: <a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">http://www.jianshu.com/p/05289a4bc8b2</a></p>
+</li>
+<li><p>Mac上搭建基于GitHub的Hexo博客: <a href="http://www.jianshu.com/p/13e64c9e2295" target="_blank" rel="external">http://www.jianshu.com/p/13e64c9e2295</a></p>
+</li>
+<li><p>在Mac下通过HEXO在Github上搭建博客: <a href="http://www.jianshu.com/p/ecd51e8ef2fa" target="_blank" rel="external">http://www.jianshu.com/p/ecd51e8ef2fa</a></p>
+</li>
+</ol>
 
       
     </div>
