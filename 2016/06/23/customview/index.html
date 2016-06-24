@@ -6,25 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>完全自定义控件-开关 | Mansoul的小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="自定义View大家在平时的工作中应该都接触并用使用，网上也有很多自定义 View 的相关知识。本篇将简单实现一个开关，讲解完全自定义View的一个简单流程。阅读本文，需要对自定义 view 有一定的基础，大家可以网上查阅相关资料学习。看下最终效果吧！
-View 的绘制流程  测量            摆放          绘制
-measure    -&amp;gt;    layout    -&amp;g">
+  <meta name="description" content="自定义View大家在平时的工作中应该都接触并用使用，网上也有很多自定义 View 的相关知识。本篇将简单实现一个开关，讲解完全自定义View的一个简单流程。阅读本文，需要对自定义 view 有一定的基础，大家可以网上查阅相关资料学习。看下最终效果吧！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="完全自定义控件-开关">
 <meta property="og:url" content="http://yoursite.com/2016/06/23/customview/index.html">
 <meta property="og:site_name" content="Mansoul的小站">
-<meta property="og:description" content="自定义View大家在平时的工作中应该都接触并用使用，网上也有很多自定义 View 的相关知识。本篇将简单实现一个开关，讲解完全自定义View的一个简单流程。阅读本文，需要对自定义 view 有一定的基础，大家可以网上查阅相关资料学习。看下最终效果吧！
-View 的绘制流程  测量            摆放          绘制
-measure    -&amp;gt;    layout    -&amp;g">
+<meta property="og:description" content="自定义View大家在平时的工作中应该都接触并用使用，网上也有很多自定义 View 的相关知识。本篇将简单实现一个开关，讲解完全自定义View的一个简单流程。阅读本文，需要对自定义 view 有一定的基础，大家可以网上查阅相关资料学习。看下最终效果吧！">
 <meta property="og:image" content="http://i1.piimg.com/567571/bcf36261412676fb.gif">
 <meta property="og:image" content="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-23/37396137.jpg">
 <meta property="og:image" content="http://i1.piimg.com/567571/bcf36261412676fb.gif">
-<meta property="og:updated_time" content="2016-06-24T02:03:07.000Z">
+<meta property="og:updated_time" content="2016-06-24T02:05:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="完全自定义控件-开关">
-<meta name="twitter:description" content="自定义View大家在平时的工作中应该都接触并用使用，网上也有很多自定义 View 的相关知识。本篇将简单实现一个开关，讲解完全自定义View的一个简单流程。阅读本文，需要对自定义 view 有一定的基础，大家可以网上查阅相关资料学习。看下最终效果吧！
-View 的绘制流程  测量            摆放          绘制
-measure    -&amp;gt;    layout    -&amp;g">
+<meta name="twitter:description" content="自定义View大家在平时的工作中应该都接触并用使用，网上也有很多自定义 View 的相关知识。本篇将简单实现一个开关，讲解完全自定义View的一个简单流程。阅读本文，需要对自定义 view 有一定的基础，大家可以网上查阅相关资料学习。看下最终效果吧！">
 <meta name="twitter:image" content="http://i1.piimg.com/567571/bcf36261412676fb.gif">
   
     <link rel="alternative" href="/atom.xml" title="Mansoul的小站" type="application/atom+xml">
@@ -211,6 +205,7 @@ measure    -&amp;gt;    layout    -&amp;g">
     <div class="article-entry" itemprop="articleBody">
       
         <p>自定义View大家在平时的工作中应该都接触并用使用，网上也有很多自定义 View 的相关知识。本篇将简单实现一个开关，讲解完全自定义View的一个简单流程。阅读本文，需要对自定义 view 有一定的基础，大家可以网上查阅相关资料学习。看下最终效果吧！<br><img src="http://i1.piimg.com/567571/bcf36261412676fb.gif" alt=""></p>
+<a id="more"></a>
 <h2 id="View-的绘制流程"><a href="#View-的绘制流程" class="headerlink" title="View 的绘制流程"></a>View 的绘制流程</h2><pre><code>  测量            摆放          绘制
 measure    -&gt;    layout    -&gt;    draw
       |           |             |
