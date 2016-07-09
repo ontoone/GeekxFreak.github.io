@@ -14,9 +14,8 @@
 <meta property="og:description" content="自定义View大家在平时的工作中应该都接触并用使用，网上也有很多自定义 View 的相关知识。本篇将简单实现一个开关，讲解完全自定义View的一个简单流程。阅读本文，需要对自定义 view 有一定的基础，大家可以网上查阅相关资料学习。看下最终效果吧！">
 <meta property="og:image" content="http://i1.piimg.com/567571/bcf36261412676fb.gif">
 <meta property="og:image" content="http://i4.piimg.com/567571/084de32f4e315540.jpg">
-<meta property="og:image" content="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-23/37396137.jpg">
 <meta property="og:image" content="http://i1.piimg.com/567571/bcf36261412676fb.gif">
-<meta property="og:updated_time" content="2016-07-09T16:09:32.000Z">
+<meta property="og:updated_time" content="2016-07-09T16:13:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="完全自定义控件-开关">
 <meta name="twitter:description" content="自定义View大家在平时的工作中应该都接触并用使用，网上也有很多自定义 View 的相关知识。本篇将简单实现一个开关，讲解完全自定义View的一个简单流程。阅读本文，需要对自定义 view 有一定的基础，大家可以网上查阅相关资料学习。看下最终效果吧！">
@@ -207,9 +206,9 @@
       
         <p>自定义View大家在平时的工作中应该都接触并用使用，网上也有很多自定义 View 的相关知识。本篇将简单实现一个开关，讲解完全自定义View的一个简单流程。阅读本文，需要对自定义 view 有一定的基础，大家可以网上查阅相关资料学习。看下最终效果吧！<br><img src="http://i1.piimg.com/567571/bcf36261412676fb.gif" alt=""></p>
 <a id="more"></a>
-<h2 id="View-的绘制流程"><a href="#View-的绘制流程" class="headerlink" title="View 的绘制流程"></a>View 的绘制流程</h2><p><img src="http://i4.piimg.com/567571/084de32f4e315540.jpg" alt=""></p>
+<h2 id="View-的绘制流程"><a href="#View-的绘制流程" class="headerlink" title="View 的绘制流程"></a><strong>View 的绘制流程</strong></h2><p><img src="http://i4.piimg.com/567571/084de32f4e315540.jpg" alt=""></p>
 <p><strong>注意：View 的绘制流程，View 的渲染是在 onResume() 方法执行之后开始绘制的！</strong></p>
-<h2 id="自定义开关"><a href="#自定义开关" class="headerlink" title="自定义开关"></a>自定义开关</h2><p><strong>1. 新建 ToggleButton 类</strong></p>
+<h2 id="自定义开关"><a href="#自定义开关" class="headerlink" title="自定义开关"></a><strong>自定义开关</strong></h2><p><strong>1. 新建 ToggleButton 类</strong></p>
 <p>新建一个 ToggleButton 类继承 View，实现它的3种构造方法，然后在 activity 布局中添加自定义的 View</p>
  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">com.mansoul.togglebutton.ToggleButton</span></span><br><span class="line">       <span class="attr">android:id</span>=<span class="string">"@+id/tb_button"</span></span><br><span class="line">       <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">       <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">       <span class="attr">android:background</span>=<span class="string">"#ff0000"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 <p> 如果此时运行可以看到,红色占满了全屏,这是因为一个默认的 View 的宽高是充满整个屏幕的</p>
@@ -225,7 +224,7 @@
 <p><strong>3. onMeasure测量</strong></p>
 <p>通过上面的3个方法,已经拿到了开关的背景和开关按钮,接下来可以直接进行测量。通过测量开关背景来确定 View 的宽高。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">     setMeasuredDimension(switchBackgroundBitmap.getWidth(), switchBackgroundBitmap.getHeight());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>通过测量，运行发现 view 的宽高测量是成功的。<br><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-23/37396137.jpg" alt=""></p>
+<p>通过测量，运行发现 view 的宽高测量是成功的。</p>
 <p><strong>4. onDeaw绘制</strong></p>
 <p>测量好宽高后，便可以开始绘制流程了.类似画画,view 的绘制需要 paint（笔）。这里直接在每个构造函数中调用初始化方法 init() </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Paint mPaint;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mPaint = <span class="keyword">new</span> Paint();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -270,7 +269,7 @@
 </code></pre><p><strong>（3）在 ToggleButton 构造函数中获取并使用自定义属性</strong></p>
 <pre><code><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ToggleButton</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, attrs);</span><br><span class="line">        init();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取配置的自定义属性</span></span><br><span class="line">        String namespace = <span class="string">"http://schemas.android.com/apk/res-auto"</span>;</span><br><span class="line">        <span class="keyword">int</span> switchBackground = attrs.getAttributeResourceValue(namespace, <span class="string">"switch_background"</span>, -<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> slideButton = attrs.getAttributeResourceValue(namespace, <span class="string">"slide_button"</span>, -<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">boolean</span> switchState = attrs.getAttributeBooleanValue(namespace, <span class="string">"switch_state"</span>, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//初始化自定义属性</span></span><br><span class="line">        setSwitchBackground(switchBackground);</span><br><span class="line">        setSlideButton(slideButton);</span><br><span class="line">        setSwitchState(switchState);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </code></pre><p>完成上述三步后，可以在 activity 中注释掉一开始我们通过 set 方法设置的3歌三个属性。至此，自定义开关全部完成！在次运行，可以发现同样的效果。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>以上就是一个简单从头到尾的自定义控件，算是一个小小的总结。项目已经传到 github 上，有需要的可以去下载。<a href="https://github.com/mansoul1994/ToggleButton" target="_blank" rel="external">GitHub项目传送门</a></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h2><p>以上就是一个简单从头到尾的自定义控件，算是一个小小的总结。项目已经传到 github 上，有需要的可以去下载。<a href="https://github.com/mansoul1994/ToggleButton" target="_blank" rel="external">GitHub项目传送门</a></p>
 
       
     </div>
