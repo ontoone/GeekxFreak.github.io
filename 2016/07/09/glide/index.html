@@ -6,16 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>glide | Mansoul的小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将来的一切都要靠自己努力去揭晓">
+  <meta name="description" content="应用中对图片的加载必不可少，图片的加载如果处理不当很容易造成OOM，所以就出现了很多图片加载库，今天学习总结的就是Glide。
+Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使用，一个高效、开源、Android设备上的媒体管理框架，它遵循BSD、MIT以及Apache 2.0协议发布。Glide具有获取、解码和展示视频剧照、图片、动画等功能，它还有灵活">
 <meta property="og:type" content="article">
 <meta property="og:title" content="glide">
 <meta property="og:url" content="http://yoursite.com/2016/07/09/glide/index.html">
 <meta property="og:site_name" content="Mansoul的小站">
-<meta property="og:description" content="将来的一切都要靠自己努力去揭晓">
-<meta property="og:updated_time" content="2016-07-09T14:29:10.000Z">
+<meta property="og:description" content="应用中对图片的加载必不可少，图片的加载如果处理不当很容易造成OOM，所以就出现了很多图片加载库，今天学习总结的就是Glide。
+Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使用，一个高效、开源、Android设备上的媒体管理框架，它遵循BSD、MIT以及Apache 2.0协议发布。Glide具有获取、解码和展示视频剧照、图片、动画等功能，它还有灵活">
+<meta property="og:updated_time" content="2016-07-09T15:55:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="glide">
-<meta name="twitter:description" content="将来的一切都要靠自己努力去揭晓">
+<meta name="twitter:description" content="应用中对图片的加载必不可少，图片的加载如果处理不当很容易造成OOM，所以就出现了很多图片加载库，今天学习总结的就是Glide。
+Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使用，一个高效、开源、Android设备上的媒体管理框架，它遵循BSD、MIT以及Apache 2.0协议发布。Glide具有获取、解码和展示视频剧照、图片、动画等功能，它还有灵活">
   
     <link rel="alternative" href="/atom.xml" title="Mansoul的小站" type="application/atom+xml">
   
@@ -196,7 +199,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>应用中对图片的加载必不可少，图片的加载如果处理不当很容易造成OOM，所以就出现了很多图片加载库，今天学习总结的就是Glide。</p>
+<h1 id="Glide简介"><a href="#Glide简介" class="headerlink" title="Glide简介"></a>Glide简介</h1><p>Glide 是 Google 员工的开源项目， Google I/O 上被推荐使用，一个高效、开源、Android设备上的媒体管理框架，它遵循BSD、MIT以及Apache 2.0协议发布。Glide具有获取、解码和展示视频剧照、图片、动画等功能，它还有灵活的API，这些API使开发者能够将Glide应用在几乎任何网络协议栈里。创建Glide的主要目的有两个，一个是实现平滑的图片列表滚动效果，另一个是支持远程图片的获取、大小调整和展示。</p>
+<p>gitHub地址：<a href="https://github.com/bumptech/glide" target="_blank" rel="external">https://github.com/bumptech/glide</a></p>
+<h1 id="Glide特点"><a href="#Glide特点" class="headerlink" title="Glide特点"></a>Glide特点</h1><ul>
+<li>使用简单</li>
+<li>可配置度高，自适应程度高</li>
+<li>支持常见图片格式　<strong><em>Jpg png gif webp</em></strong></li>
+<li>支持多种数据源　<strong><em>网络、本地、资源、Assets 等</em></strong></li>
+<li>高效缓存策略　<strong><em>支持Memory和Disk图片缓存默认Bitmap格式采用RGB_565内存使用至少减少一半</em></strong></li>
+<li>生命周期集成　<strong><em>根据Activity/Fragment生命周期自动管理请求</em></strong></li>
+<li>高效处理Bitmap　<strong><em>使用Bitmap Pool使Bitmap复用，主动调用recycle回收需要回收的Bitmap，减小系统回收压力</em></strong></li>
+</ul>
+<h1 id="Glide使用"><a href="#Glide使用" class="headerlink" title="Glide使用"></a>Glide使用</h1>
       
     </div>
     
