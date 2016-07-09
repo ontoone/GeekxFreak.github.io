@@ -14,7 +14,7 @@ Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使�
 <meta property="og:site_name" content="Mansoul的小站">
 <meta property="og:description" content="应用中对图片的加载必不可少，图片的加载如果处理不当很容易造成OOM，所以就出现了很多图片加载库，今天学习总结的就是Glide。
 Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使用，一个高效、开源、Android设备上的媒体管理框架，它遵循BSD、MIT以及Apache 2.0协议发布。Glide具有获取、解码和展示视频剧照、图片、动画等功能，它还有灵活">
-<meta property="og:updated_time" content="2016-07-09T16:36:31.000Z">
+<meta property="og:updated_time" content="2016-07-09T16:49:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="glide">
 <meta name="twitter:description" content="应用中对图片的加载必不可少，图片的加载如果处理不当很容易造成OOM，所以就出现了很多图片加载库，今天学习总结的就是Glide。
@@ -221,7 +221,26 @@ Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使�
 compile &apos;com.github.bumptech.glide:okhttp3-integration:1.4.0@aar&apos;
 compile &apos;com.squareup.okhttp3:okhttp:3.2.0&apos;
 </code></pre><h2 id="Glide使用"><a href="#Glide使用" class="headerlink" title="Glide使用"></a>Glide使用</h2><p><strong>1. 简单加载图片实例</strong></p>
-<p><code>Glide.with(this).load(imageUrl).into(imageView);</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Glide</span><br><span class="line">        .with(<span class="keyword">this</span>).</span><br><span class="line">        load(imageUrl).</span><br><span class="line">        into(imageView);</span><br></pre></td></tr></table></figure>
+<p><strong>Glide.with()使用</strong></p>
+<ul>
+<li>with(Context context).使用Application上下文，Glide请求将不受Activity/Fragment生命周期控制。</li>
+<li>with(Activity activity).使用Activity作为上下文，Glide的请求会受到Activity生命周期控制。</li>
+<li>with(FragmentActivity activity).Glide的请求会受到FragmentActivity生命周期控制。</li>
+<li>with(android.app.Fragment fragment).Glide的请求会受到Fragment 生命周期控制。</li>
+<li>with(android.support.v4.app.Fragment fragment).Glide的请求会受到Fragment生命周期控制。</li>
+</ul>
+<p><strong>requestManager.load()使用</strong></p>
+<p>Glide基本可以load任何可以拿到的媒体资源，如： </p>
+<ul>
+<li>load SD卡资源：load(“file://“+ Environment.getExternalStorageDirectory().getPath()+”/test.jpg”) </li>
+<li>load assets资源：load(“file:///android_asset/f003.gif”) </li>
+<li>load raw资源：load(“Android.resource://com.frank.glide/raw/raw_1”)或load(“android.resource://com.frank.glide/raw/“+R.raw.raw_1) </li>
+<li>load drawable资源：load(“android.resource://com.frank.glide/drawable/news”)或load(“android.resource://com.frank.glide/drawable/“+R.drawable.news) </li>
+<li>load ContentProvider资源：load(“content://media/external/images/media/139469”) </li>
+<li>load http资源：load(“<a href="http://xxx.jpg" target="_blank" rel="external">http://xxx.jpg</a>“) </li>
+<li>load https资源：load(“<a href="https://xxx.jpg_.webp" target="_blank" rel="external">https://xxx.jpg_.webp</a>“) </li>
+</ul>
 
       
     </div>
