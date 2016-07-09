@@ -16,7 +16,7 @@
 <meta property="og:image" content="http://i4.piimg.com/567571/084de32f4e315540.jpg">
 <meta property="og:image" content="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-23/37396137.jpg">
 <meta property="og:image" content="http://i1.piimg.com/567571/bcf36261412676fb.gif">
-<meta property="og:updated_time" content="2016-06-24T03:19:26.000Z">
+<meta property="og:updated_time" content="2016-07-09T16:01:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="完全自定义控件-开关">
 <meta name="twitter:description" content="自定义View大家在平时的工作中应该都接触并用使用，网上也有很多自定义 View 的相关知识。本篇将简单实现一个开关，讲解完全自定义View的一个简单流程。阅读本文，需要对自定义 view 有一定的基础，大家可以网上查阅相关资料学习。看下最终效果吧！">
@@ -209,7 +209,8 @@
 <a id="more"></a>
 <h2 id="View-的绘制流程"><a href="#View-的绘制流程" class="headerlink" title="View 的绘制流程"></a>View 的绘制流程</h2><p><img src="http://i4.piimg.com/567571/084de32f4e315540.jpg" alt=""></p>
 <p><strong>注意：View 的绘制流程，View 的渲染是在 onResume() 方法执行之后开始绘制的！</strong></p>
-<h2 id="自定义开关"><a href="#自定义开关" class="headerlink" title="自定义开关"></a>自定义开关</h2><h3 id="1-新建-ToggleButton-类"><a href="#1-新建-ToggleButton-类" class="headerlink" title="1.新建 ToggleButton 类"></a>1.新建 ToggleButton 类</h3><p>新建一个 ToggleButton 类继承 View，实现它的3种构造方法，然后在 activity 布局中添加自定义的 View</p>
+<h2 id="自定义开关"><a href="#自定义开关" class="headerlink" title="自定义开关"></a>自定义开关</h2><p>####1. 新建 ToggleButton 类</p>
+<p>新建一个 ToggleButton 类继承 View，实现它的3种构造方法，然后在 activity 布局中添加自定义的 View</p>
  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">com.mansoul.togglebutton.ToggleButton</span></span><br><span class="line">       <span class="attr">android:id</span>=<span class="string">"@+id/tb_button"</span></span><br><span class="line">       <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">       <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">       <span class="attr">android:background</span>=<span class="string">"#ff0000"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 <p> 如果此时运行可以看到,红色占满了全屏,这是因为一个默认的 View 的宽高是充满整个屏幕的</p>
 <h3 id="2-给自定义-View-设置相关属性"><a href="#2-给自定义-View-设置相关属性" class="headerlink" title="2.给自定义 View 设置相关属性"></a>2.给自定义 View 设置相关属性</h3><ul>
