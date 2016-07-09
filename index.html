@@ -212,8 +212,9 @@
 compile &apos;com.github.bumptech.glide:okhttp3-integration:1.4.0@aar&apos;
 compile &apos;com.squareup.okhttp3:okhttp:3.2.0&apos;
 </code></pre><h2 id="Glide使用"><a href="#Glide使用" class="headerlink" title="Glide使用"></a>Glide使用</h2><p><strong>1. 简单加载图片实例</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Glide</span><br><span class="line">        .with(<span class="keyword">this</span>).</span><br><span class="line">        load(imageUrl).</span><br><span class="line">        into(imageView);</span><br></pre></td></tr></table></figure>
-<p><strong>Glide.with()使用</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Glide</span><br><span class="line">        .with(<span class="keyword">this</span>)</span><br><span class="line">        .load(imageUrl)</span><br><span class="line">        .into(imageView);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><strong>Glide.with()使用</strong></p>
 <ul>
 <li>with(Context context).使用Application上下文，Glide请求将不受Activity/Fragment生命周期控制。</li>
 <li>with(Activity activity).使用Activity作为上下文，Glide的请求会受到Activity生命周期控制。</li>
@@ -221,16 +222,19 @@ compile &apos;com.squareup.okhttp3:okhttp:3.2.0&apos;
 <li>with(android.app.Fragment fragment).Glide的请求会受到Fragment 生命周期控制。</li>
 <li>with(android.support.v4.app.Fragment fragment).Glide的请求会受到Fragment生命周期控制。</li>
 </ul>
-<p><strong>requestManager.load()使用</strong></p>
-<p>Glide基本可以load任何可以拿到的媒体资源，如： </p>
+</li>
+<li><p><strong>.load()使用</strong></p>
+<p>  Glide基本可以load任何可以拿到的媒体资源，如： </p>
 <ul>
-<li>load SD卡资源：load(“file://“+ Environment.getExternalStorageDirectory().getPath()+”/test.jpg”) </li>
+<li>load SD卡资源：<code>load(&quot;file://&quot;+ Environment.getExternalStorageDirectory().getPath()+&quot;/test.jpg&quot;)</code> </li>
 <li>load assets资源：load(“file:///android_asset/f003.gif”) </li>
 <li>load raw资源：load(“Android.resource://com.frank.glide/raw/raw_1”)或load(“android.resource://com.frank.glide/raw/“+R.raw.raw_1) </li>
 <li>load drawable资源：load(“android.resource://com.frank.glide/drawable/news”)或load(“android.resource://com.frank.glide/drawable/“+R.drawable.news) </li>
 <li>load ContentProvider资源：load(“content://media/external/images/media/139469”) </li>
 <li>load http资源：load(“<a href="http://xxx.jpg" target="_blank" rel="external">http://xxx.jpg</a>“) </li>
 <li>load https资源：load(“<a href="https://xxx.jpg_.webp" target="_blank" rel="external">https://xxx.jpg_.webp</a>“) </li>
+</ul>
+</li>
 </ul>
 
       
