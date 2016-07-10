@@ -14,7 +14,7 @@ Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使�
 <meta property="og:site_name" content="Mansoul的小站">
 <meta property="og:description" content="应用中对图片的加载必不可少，图片的加载如果处理不当很容易造成OOM，所以就出现了很多图片加载库，今天学习总结的就是Glide。
 Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使用，一个高效、开源、Android设备上的媒体管理框架，它遵循BSD、MIT以及Apache 2.0协议发布。Glide具有获取、解码和展示视频剧照、图片、动画等功能，它还有灵活">
-<meta property="og:updated_time" content="2016-07-10T05:32:11.000Z">
+<meta property="og:updated_time" content="2016-07-10T05:40:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Google推荐的图片加载库-Glide">
 <meta name="twitter:description" content="应用中对图片的加载必不可少，图片的加载如果处理不当很容易造成OOM，所以就出现了很多图片加载库，今天学习总结的就是Glide。
@@ -241,12 +241,17 @@ compile &apos;com.squareup.okhttp3:okhttp:3.2.0&apos;
 <p>  Glide基本可以load任何可以拿到的媒体资源，如： </p>
 <ul>
 <li><p>load SD卡资源：</p>
-  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">	load(<span class="string">"file://"</span>+ Environment.getExternalStorageDirectory().getPath()+<span class="string">"/test.jpg"</span>)</span><br><span class="line">	``` </span><br><span class="line"></span><br><span class="line">* load assets资源：</span><br><span class="line"></span><br><span class="line">	```<span class="function">java</span><br><span class="line">	<span class="title">load</span><span class="params">(<span class="string">"file:///android_asset/f003.gif"</span>)</span></span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load(<span class="string">"file://"</span>+ Environment.getExternalStorageDirectory().getPath()+<span class="string">"/test.jpg"</span>)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
-<pre><code>* load raw资源：
+<pre><code>* load assets资源：
+
+    <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load(<span class="string">"file:///android_asset/f003.gif"</span>)</span><br></pre></td></tr></table></figure>
+
+
+* load raw资源：
 
     <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">	load(<span class="string">"Android.resource://com.frank.glide/raw/raw_1"</span>)</span><br><span class="line">	或</span><br><span class="line">	load(<span class="string">"android.resource://com.frank.glide/raw/"</span>+R.raw.raw_1)</span><br><span class="line">	``` </span><br><span class="line"></span><br><span class="line">* load drawable资源：</span><br><span class="line"></span><br><span class="line">	```<span class="function">java</span><br><span class="line">	<span class="title">load</span><span class="params">(<span class="string">"android.resource://com.frank.glide/drawable/news"</span>)</span></span><br><span class="line">	或</span><br><span class="line">	<span class="title">load</span><span class="params">(<span class="string">"android.resource://com.frank.glide/drawable/"</span>+R.drawable.news)</span></span></span><br></pre></td></tr></table></figure>
 
