@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>glide | Mansoul的小站</title>
+  <title>Google推荐的图片加载库-Glide | Mansoul的小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="应用中对图片的加载必不可少，图片的加载如果处理不当很容易造成OOM，所以就出现了很多图片加载库，今天学习总结的就是Glide。
 Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使用，一个高效、开源、Android设备上的媒体管理框架，它遵循BSD、MIT以及Apache 2.0协议发布。Glide具有获取、解码和展示视频剧照、图片、动画等功能，它还有灵活">
 <meta property="og:type" content="article">
-<meta property="og:title" content="glide">
+<meta property="og:title" content="Google推荐的图片加载库-Glide">
 <meta property="og:url" content="http://yoursite.com/2016/07/09/glide/index.html">
 <meta property="og:site_name" content="Mansoul的小站">
 <meta property="og:description" content="应用中对图片的加载必不可少，图片的加载如果处理不当很容易造成OOM，所以就出现了很多图片加载库，今天学习总结的就是Glide。
 Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使用，一个高效、开源、Android设备上的媒体管理框架，它遵循BSD、MIT以及Apache 2.0协议发布。Glide具有获取、解码和展示视频剧照、图片、动画等功能，它还有灵活">
-<meta property="og:updated_time" content="2016-07-10T05:07:03.000Z">
+<meta property="og:updated_time" content="2016-07-10T05:18:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="glide">
+<meta name="twitter:title" content="Google推荐的图片加载库-Glide">
 <meta name="twitter:description" content="应用中对图片的加载必不可少，图片的加载如果处理不当很容易造成OOM，所以就出现了很多图片加载库，今天学习总结的就是Glide。
 Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使用，一个高效、开源、Android设备上的媒体管理框架，它遵循BSD、MIT以及Apache 2.0协议发布。Glide具有获取、解码和展示视频剧照、图片、动画等功能，它还有灵活">
   
@@ -106,7 +106,7 @@ Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使�
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Volley/" style="font-size: 10px;">Volley</a> <a href="/tags/hello-world/" style="font-size: 10px;">hello world</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/自定义View/" style="font-size: 10px;">自定义View</a>
+						<a href="/tags/Android/" style="font-size: 20px;">Android</a> <a href="/tags/RxJava/" style="font-size: 10px;">RxJava</a> <a href="/tags/Volley/" style="font-size: 10px;">Volley</a> <a href="/tags/hello-world/" style="font-size: 10px;">hello world</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/图片加载/" style="font-size: 10px;">图片加载</a> <a href="/tags/自定义View/" style="font-size: 10px;">自定义View</a>
 					</div>
 				</section>
 				
@@ -183,7 +183,7 @@ Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使�
         
   
     <h1 class="article-title" itemprop="name">
-      glide
+      Google推荐的图片加载库-Glide
     </h1>
   
 
@@ -191,6 +191,10 @@ Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使�
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图片加载/">图片加载</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -291,6 +295,26 @@ compile &apos;com.squareup.okhttp3:okhttp:3.2.0&apos;
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Glide.with(<span class="keyword">this</span>).load(imageUrl).asBitmap().into(imageView);<span class="comment">//显示gif静态图片</span></span><br><span class="line"></span><br><span class="line">Glide.with(<span class="keyword">this</span>).load(imageUrl).asGif().into(imageView);<span class="comment">//显示gif动态图片</span></span><br></pre></td></tr></table></figure>
 <p><strong>11. 缓存的动态清理</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Glide.get(<span class="keyword">this</span>).clearDiskCache();<span class="comment">//清理磁盘缓存 在子线程中执行</span></span><br><span class="line"></span><br><span class="line">Glide.get(<span class="keyword">this</span>).clearMemory();<span class="comment">//清理内存缓存  在UI主线程中进行</span></span><br></pre></td></tr></table></figure>
+<h2 id="Glide使用技巧"><a href="#Glide使用技巧" class="headerlink" title="Glide使用技巧"></a>Glide使用技巧</h2><ol>
+<li><p><strong>Glide.with(context).resumeRequests()和 Glide.with(context).pauseRequests()</strong></p>
+<p> 当列表在滑动的时候，调用pauseRequests()取消请求，滑动停止时，调用resumeRequests()恢复请求。这样是不是会好些呢？</p>
+</li>
+<li><p><strong>Glide.clear()</strong></p>
+<p> 当你想清除掉所有的图片加载请求时，这个方法可以帮助到你。</p>
+</li>
+<li><p><strong>ListPreloader</strong></p>
+<p> 如果你想让列表预加载的话，不妨试一下ListPreloader这个类。</p>
+</li>
+<li><p><strong>.skipMemoryCache(true)</strong></p>
+<p> 禁止内存缓存，Glide磁盘缓存已经足够快，禁用内存缓存可以节省内存</p>
+</li>
+</ol>
+<ol>
+<li><p><strong>.diskCacheStrategy(DiskCacheStrategy.NONE)</strong></p>
+<p> 禁止磁盘缓存</p>
+</li>
+</ol>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>以上大致总结了Glide的基本用法和一些技巧！</p>
 
       
     </div>
@@ -337,7 +361,7 @@ compile &apos;com.squareup.okhttp3:okhttp:3.2.0&apos;
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="glide" data-title="glide" data-url="http://yoursite.com/2016/07/09/glide/"></div>
+	<div class="ds-thread" data-thread-key="glide" data-title="Google推荐的图片加载库-Glide" data-url="http://yoursite.com/2016/07/09/glide/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
