@@ -14,7 +14,7 @@ Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使�
 <meta property="og:site_name" content="Mansoul的小站">
 <meta property="og:description" content="应用中对图片的加载必不可少，图片的加载如果处理不当很容易造成OOM，所以就出现了很多图片加载库，今天学习总结的就是Glide。
 Glide简介Glide 是 Google 员工的开源项目， Google I/O 上被推荐使用，一个高效、开源、Android设备上的媒体管理框架，它遵循BSD、MIT以及Apache 2.0协议发布。Glide具有获取、解码和展示视频剧照、图片、动画等功能，它还有灵活">
-<meta property="og:updated_time" content="2016-07-10T05:03:05.000Z">
+<meta property="og:updated_time" content="2016-07-10T05:07:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="glide">
 <meta name="twitter:description" content="应用中对图片的加载必不可少，图片的加载如果处理不当很容易造成OOM，所以就出现了很多图片加载库，今天学习总结的就是Glide。
@@ -236,13 +236,17 @@ compile &apos;com.squareup.okhttp3:okhttp:3.2.0&apos;
 <li><p><strong>.load()使用</strong></p>
 <p>  Glide基本可以load任何可以拿到的媒体资源，如： </p>
 <ul>
-<li><p>load SD卡资源：<figure class="highlight plain"><figcaption><span>Environment.getExternalStorageDirectory().getPath()+"/test.jpg")``` </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* load assets资源：```load(&quot;file:///android_asset/f003.gif&quot;)</span><br></pre></td></tr></table></figure></p>
+<li><p>load SD卡资源：</p>
+<figure class="highlight plain"><figcaption><span>Environment.getExternalStorageDirectory().getPath()+"/test.jpg")``` </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* load assets资源：</span><br><span class="line"></span><br><span class="line">```load(&quot;file:///android_asset/f003.gif&quot;)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>load raw资源：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* load drawable资源：```load(&quot;android.resource://com.frank.glide/drawable/news&quot;)```或```load(&quot;android.resource://com.frank.glide/drawable/&quot;+R.drawable.news)</span><br></pre></td></tr></table></figure></p>
+<li><p>load raw资源：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```load(&quot;android.resource://com.frank.glide/raw/&quot;+R.raw.raw_1)``` </span><br><span class="line">* load drawable资源：</span><br><span class="line"></span><br><span class="line">```load(&quot;android.resource://com.frank.glide/drawable/news&quot;)```或```load(&quot;android.resource://com.frank.glide/drawable/&quot;+R.drawable.news)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>load ContentProvider资源：<figure class="highlight plain"><figcaption><span>```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* load http资源：```load(&quot;http://xxx.jpg&quot;)</span><br></pre></td></tr></table></figure></p>
+<li><p>load ContentProvider资源：</p>
+<figure class="highlight plain"><figcaption><span>```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* load http资源：</span><br><span class="line"></span><br><span class="line">```load(&quot;http://xxx.jpg&quot;)</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>load https资源：<figure class="highlight plain"><figcaption><span>```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**2. 设置加载中以及加载失败图片**	</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">Glide.with(this).load(imageUrl).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(imageView);</span><br></pre></td></tr></table></figure></p>
+<li><p>load https资源：</p>
+<figure class="highlight plain"><figcaption><span>```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**2. 设置加载中以及加载失败图片**	</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">Glide.with(this).load(imageUrl).placeholder(R.mipmap.ic_launcher).error(R.mipmap.ic_launcher).into(imageView);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
