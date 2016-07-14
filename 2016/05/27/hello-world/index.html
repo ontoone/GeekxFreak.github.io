@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/05/27/hello-world/index.html">
 <meta property="og:site_name" content="Mansoul's Blog">
 <meta property="og:description" content="第一次搭建个人博客，按照惯例。Hello world！其实很早就有想法搭建这样一个博客，完全属于自己的空间。由于种种原因(懒…)，一直拖延。博客基于Hexo，下面会介绍下搭建的完整过程。">
-<meta property="og:updated_time" content="2016-06-15T05:00:41.000Z">
+<meta property="og:updated_time" content="2016-07-14T15:11:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello World">
 <meta name="twitter:description" content="第一次搭建个人博客，按照惯例。Hello world！其实很早就有想法搭建这样一个博客，完全属于自己的空间。由于种种原因(懒…)，一直拖延。博客基于Hexo，下面会介绍下搭建的完整过程。">
@@ -338,10 +338,8 @@
 <p><strong>安装 Git</strong></p>
 <p>我安装了Xcode，而Xcode自带git。当然也可通过其他方式，具体可以自行百度。</p>
 <h3 id="正式搭建博客"><a href="#正式搭建博客" class="headerlink" title="正式搭建博客"></a>正式搭建博客</h3><p>需要的环境都已准备就绪，接下来就开始了今天的重点，正式用 Hexo+GitHub搭建个人博客</p>
-<p>####1. 先注册一个github账号以及创建一个仓库用来存放博客文件才可以进行以下的配置</p>
-<p>这个就没什么好说的啦，简单操作。</p>
-<p>####2. 配置Git</p>
-<ol>
+<h4 id="1-先注册一个github账号以及创建一个仓库用来存放博客文件才可以进行以下的配置"><a href="#1-先注册一个github账号以及创建一个仓库用来存放博客文件才可以进行以下的配置" class="headerlink" title="1. 先注册一个github账号以及创建一个仓库用来存放博客文件才可以进行以下的配置"></a>1. 先注册一个github账号以及创建一个仓库用来存放博客文件才可以进行以下的配置</h4><p>这个就没什么好说的啦，简单操作。</p>
+<h4 id="2-配置Git"><a href="#2-配置Git" class="headerlink" title="2. 配置Git"></a>2. 配置Git</h4><ol>
 <li><p>检查SSH keys是否存在</p>
 <pre><code>cd ~/.ssh
 </code></pre><p> 如果显示“No such file or directory”，跳到第3步，否则第2步。</p>
@@ -370,8 +368,7 @@ git config --global user.email &quot;你注册github的邮箱&quot;
 </code></pre><p> 到这里才算是真正配置好Git了，下面就可以开始配置自己的博客了。</p>
 </li>
 </ol>
-<p>####3. 配置博客</p>
-<p><strong>注意：在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错，切记 切记</strong></p>
+<h4 id="3-配置博客"><a href="#3-配置博客" class="headerlink" title="3. 配置博客"></a>3. 配置博客</h4><p><strong>注意：在配置所有的_config.yml文件时（包括theme中的），在所有的冒号:后边都要加一个空格，否则执行hexo命令会报错，切记 切记</strong></p>
 <p>本地的blog文件夹下内容为：</p>
 <pre><code>_config.yml    
 db.json 
@@ -407,7 +404,7 @@ ERROR Try runing: &apos;npm install hexo --save&apos;
 </ol>
 </li>
 </ul>
-<p>###最后<br>感谢网络上搭建博客分享他们经验的人！</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>感谢网络上搭建博客分享他们经验的人！</p>
 <ol>
 <li><p>如何搭建一个独立博客——简明Github Pages与Hexo教程: <a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">http://www.jianshu.com/p/05289a4bc8b2</a></p>
 </li>
@@ -585,7 +582,7 @@ ERROR Try runing: &apos;npm install hexo --save&apos;
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-Hexo-？"><span class="nav-number">1.</span> <span class="nav-text">什么是 Hexo ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正式搭建博客"><span class="nav-number">2.</span> <span class="nav-text">正式搭建博客</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-Hexo-？"><span class="nav-number">1.</span> <span class="nav-text">什么是 Hexo ？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正式搭建博客"><span class="nav-number">2.</span> <span class="nav-text">正式搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-先注册一个github账号以及创建一个仓库用来存放博客文件才可以进行以下的配置"><span class="nav-number">2.1.</span> <span class="nav-text">1. 先注册一个github账号以及创建一个仓库用来存放博客文件才可以进行以下的配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-配置Git"><span class="nav-number">2.2.</span> <span class="nav-text">2. 配置Git</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-配置博客"><span class="nav-number">2.3.</span> <span class="nav-text">3. 配置博客</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后"><span class="nav-number">3.</span> <span class="nav-text">最后</span></a></li></ol></div>
             
           </div>
         </section>
