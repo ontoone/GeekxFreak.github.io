@@ -100,7 +100,7 @@ Android中的补间动画我的理解是设定起始和结束的值、运动间�
 Android中的补间动画我的理解是设定起始和结束的值、运动间隔和插值器(Interpolator)，产生的这么一个运动过程。补间动画分为四种变换过程，即平移(translate)、缩放(scale)、旋转(rot">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB5919f51a6e9ca172a8d7d6e98cd6fe5f?method=download&shareKey=22e545bc56f39ae44053ae6b5172cf37">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB4e01fa1f8e95ae5067456f16b8817488?method=download&shareKey=4d1629be6d2b86b5a1e7433f27c4114e">
-<meta property="og:updated_time" content="2018-03-11T14:30:38.000Z">
+<meta property="og:updated_time" content="2018-03-11T14:33:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android动画（一）：补间动画">
 <meta name="twitter:description" content="先来看下补间动画的定义：
@@ -453,32 +453,6 @@ Android中的补间动画我的理解是设定起始和结束的值、运动间�
 <table>
 <thead>
 <tr>
-<th>XML属性</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>android:fromXDelta</td>
-<td>x轴运动的起点</td>
-</tr>
-<tr>
-<td>android:fromYDelta</td>
-<td>y轴运动的起点</td>
-</tr>
-<tr>
-<td>android:toXDelta</td>
-<td>x轴运动的终点</td>
-</tr>
-<tr>
-<td>android:toYDelta</td>
-<td>y轴运动的终点</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
 <th>JAVA方法</th>
 <th>XML属性</th>
 <th>含义</th>
@@ -533,7 +507,7 @@ Android中的补间动画我的理解是设定起始和结束的值、运动间�
 </tbody>
 </table>
 <blockquote>
-<p>同时设置 setFillAfter 和 setFillBefore(setFillEnable) 结果已 setFillAfter 为准剩下的无效</p>
+<p>同时设置 setFillAfter 和 setFillBefore(setFillEnable) 只有 setFillAfter 生效</p>
 </blockquote>
 
       
