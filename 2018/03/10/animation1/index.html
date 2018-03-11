@@ -100,7 +100,7 @@ Android中的补间动画我的理解是设定起始和结束的值、运动间�
 Android中的补间动画我的理解是设定起始和结束的值、运动间隔和插值器(Interpolator)，产生的这么一个运动过程。补间动画分为四种变换过程，即平移(translate)、缩放(scale)、旋转(rot">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB5919f51a6e9ca172a8d7d6e98cd6fe5f?method=download&shareKey=22e545bc56f39ae44053ae6b5172cf37">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB4e01fa1f8e95ae5067456f16b8817488?method=download&shareKey=4d1629be6d2b86b5a1e7433f27c4114e">
-<meta property="og:updated_time" content="2018-03-11T14:23:48.000Z">
+<meta property="og:updated_time" content="2018-03-11T14:30:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android动画（一）：补间动画">
 <meta name="twitter:description" content="先来看下补间动画的定义：
@@ -312,31 +312,170 @@ Android中的补间动画我的理解是设定起始和结束的值、运动间�
 <h2 id="XML配置"><a href="#XML配置" class="headerlink" title="XML配置"></a>XML配置</h2><h3 id="平移-translate-、缩放-scale-、旋转-rotate-、透明度-alpha"><a href="#平移-translate-、缩放-scale-、旋转-rotate-、透明度-alpha" class="headerlink" title="平移(translate)、缩放(scale)、旋转(rotate)、透明度(alpha)"></a>平移(translate)、缩放(scale)、旋转(rotate)、透明度(alpha)</h3><p><strong>注意：这些动画都是以控件的父布局为坐标系，在其上进行位移的运动</strong></p>
 <p>以translate为例</p>
 <a id="more"></a>
-<p><strong>1.创建动画xml文件，其路基为res/anim/translate.xml</strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">translate</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">android:duration</span>=<span class="string">"1000"</span></span><br><span class="line">    <span class="attr">android:fromXDelta</span>=<span class="string">"0"</span></span><br><span class="line">    <span class="attr">android:fromYDelta</span>=<span class="string">"0"</span></span><br><span class="line">    <span class="attr">android:toXDelta</span>=<span class="string">"300"</span></span><br><span class="line">    <span class="attr">android:toYDelta</span>=<span class="string">"300"</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>2.Java代码中使用配置的xml</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ImageView image = findViewById(R.id.image);</span><br><span class="line">Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.translate);</span><br><span class="line">image.startAnimation(animation);</span><br></pre></td></tr></table></figure></p>
+<p><strong>1.创建动画xml文件，其路基为res/anim/translate.xml</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">translate</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">android:duration</span>=<span class="string">"1000"</span></span><br><span class="line">    <span class="attr">android:fromXDelta</span>=<span class="string">"0"</span></span><br><span class="line">    <span class="attr">android:fromYDelta</span>=<span class="string">"0"</span></span><br><span class="line">    <span class="attr">android:toXDelta</span>=<span class="string">"300"</span></span><br><span class="line">    <span class="attr">android:toYDelta</span>=<span class="string">"300"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>2.Java代码中使用配置的xml</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ImageView image = findViewById(R.id.image);</span><br><span class="line">Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.translate);</span><br><span class="line">image.startAnimation(animation);</span><br></pre></td></tr></table></figure>
 <p>红色为根布局，蓝色背景为imageview的父布局，可以看到动画是以父布局为坐标轴进行移动的。还有个细节可以看到view移动后给view设置的点击事件还在原始位置，即只是view的内容进行了位移，view本身没有被移动。这里直接给出结论就是<strong>补间动画不改变view的位置，只是view的内容被移动</strong>，具体原因这里不在展开，想了解的童鞋可自行了解。</p>
 <p><img src="https://note.youdao.com/yws/api/personal/file/WEB5919f51a6e9ca172a8d7d6e98cd6fe5f?method=download&amp;shareKey=22e545bc56f39ae44053ae6b5172cf37" alt="image"></p>
 <p>这里就给出translate的示例，scale、rotate、alpha使用方法和translate类似，只是xml配置属性不同，下面给出所有xml配置属性，大家可以自行尝试。</p>
-<p><strong>translate</strong><br>XML属性 | 含义<br>—|—<br>android:fromXDelta | x轴运动的起点<br>android:fromYDelta | y轴运动的起点<br>android:toXDelta | x轴运动的终点<br>android:toYDelta | y轴运动的终点</p>
-<p><strong>scale</strong><br>XML属性 | 含义<br>—|—<br>android:fromXScale | 开始x轴缩放比例，1.0表示无变化<br>android:toXScale     | 结束x轴缩放比例<br>androd:fromYScale | 开始y轴缩放比例<br>android:toYScale | 结束y轴缩放比例<br>android:pivotX | 缩放起点x轴坐标<br>android:pivotY | 缩放起点y轴坐标</p>
+<p><strong>translate</strong></p>
+<table>
+<thead>
+<tr>
+<th>XML属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android:fromXDelta</td>
+<td>x轴运动的起点</td>
+</tr>
+<tr>
+<td>android:fromYDelta</td>
+<td>y轴运动的起点</td>
+</tr>
+<tr>
+<td>android:toXDelta</td>
+<td>x轴运动的终点</td>
+</tr>
+<tr>
+<td>android:toYDelta</td>
+<td>y轴运动的终点</td>
+</tr>
+</tbody>
+</table>
+<p><strong>scale</strong></p>
+<table>
+<thead>
+<tr>
+<th>XML属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android:fromXScale</td>
+<td>开始x轴缩放比例，1.0表示无变化</td>
+</tr>
+<tr>
+<td>android:toXScale</td>
+<td>结束x轴缩放比例</td>
+</tr>
+<tr>
+<td>androd:fromYScale</td>
+<td>开始y轴缩放比例</td>
+</tr>
+<tr>
+<td>android:toYScale</td>
+<td>结束y轴缩放比例</td>
+</tr>
+<tr>
+<td>android:pivotX</td>
+<td>缩放起点x轴坐标</td>
+</tr>
+<tr>
+<td>android:pivotY</td>
+<td>缩放起点y轴坐标</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
 <p>privot：取值可以是数值（50）、百分数（50%）、百分数p（50%p），当取值为数值时，缩放起点为View左上角坐标加具体数值像素，当取值为百分数时，表示在当前View左上角坐加上View宽度的具体百分比，当取值为百分数p时，表示在View左上角坐标加上父控件宽度的具体百分比</p>
 </blockquote>
-<p><strong>rotate</strong><br>| XML属性 | 含义 |<br>|:—–|:—–|<br>| android:fromDegress | 旋转开始角度，正代表顺时针度数，负代表逆时针度数 |<br>| android:toDegress | 旋转结束角度 |<br>| android:pivotX | 旋转起点x轴坐标 |<br>| android:pivotY | 旋转起点y轴坐标 |</p>
-<p><strong>alpha</strong><br>XML属性 | 含义<br>—|—<br>android:fromAlpha | 开始透明度，范围0.0(全透明)~1.0(不透明)<br>androdi:toAlpha | 结束透明度</p>
+<p><strong>rotate</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">XML属性</th>
+<th style="text-align:left">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">android:fromDegress</td>
+<td style="text-align:left">旋转开始角度，正代表顺时针度数，负代表逆时针度数</td>
+</tr>
+<tr>
+<td style="text-align:left">android:toDegress</td>
+<td style="text-align:left">旋转结束角度</td>
+</tr>
+<tr>
+<td style="text-align:left">android:pivotX</td>
+<td style="text-align:left">旋转起点x轴坐标</td>
+</tr>
+<tr>
+<td style="text-align:left">android:pivotY</td>
+<td style="text-align:left">旋转起点y轴坐标</td>
+</tr>
+</tbody>
+</table>
+<p><strong>alpha</strong></p>
+<table>
+<thead>
+<tr>
+<th>XML属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android:fromAlpha</td>
+<td>开始透明度，范围0.0(全透明)~1.0(不透明)</td>
+</tr>
+<tr>
+<td>androdi:toAlpha</td>
+<td>结束透明度</td>
+</tr>
+</tbody>
+</table>
 <h3 id="集合动画（set）"><a href="#集合动画（set）" class="headerlink" title="集合动画（set）"></a>集合动画（set）</h3><p>顾名思义就是动画放在一起使用，使用和上面单个动画一样，如下：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">android:duration</span>=<span class="string">"1000"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">alpha</span></span><br><span class="line">        <span class="attr">android:fromAlpha</span>=<span class="string">"0.2"</span></span><br><span class="line">        <span class="attr">android:toAlpha</span>=<span class="string">"1"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rotate</span></span><br><span class="line">        <span class="attr">android:fromDegrees</span>=<span class="string">"0"</span></span><br><span class="line">        <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></span><br><span class="line">        <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></span><br><span class="line">        <span class="attr">android:toDegrees</span>=<span class="string">"360"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scale</span></span><br><span class="line">        <span class="attr">android:fromXScale</span>=<span class="string">"0.5"</span></span><br><span class="line">        <span class="attr">android:fromYScale</span>=<span class="string">"0.5"</span></span><br><span class="line">        <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></span><br><span class="line">        <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></span><br><span class="line">        <span class="attr">android:toXScale</span>=<span class="string">"1.0"</span></span><br><span class="line">        <span class="attr">android:toYScale</span>=<span class="string">"1.0"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">translate</span></span><br><span class="line">        <span class="attr">android:fromXDelta</span>=<span class="string">"0"</span></span><br><span class="line">        <span class="attr">android:fromYDelta</span>=<span class="string">"0"</span></span><br><span class="line">        <span class="attr">android:toXDelta</span>=<span class="string">"300"</span></span><br><span class="line">        <span class="attr">android:toYDelta</span>=<span class="string">"300"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>代码中使用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ImageView image = findViewById(R.id.image);</span><br><span class="line">Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.set);</span><br><span class="line">image.startAnimation(animation);</span><br></pre></td></tr></table></figure></p>
+<p>代码中使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ImageView image = findViewById(R.id.image);</span><br><span class="line">Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.set);</span><br><span class="line">image.startAnimation(animation);</span><br></pre></td></tr></table></figure>
 <p><img src="https://note.youdao.com/yws/api/personal/file/WEB4e01fa1f8e95ae5067456f16b8817488?method=download&amp;shareKey=4d1629be6d2b86b5a1e7433f27c4114e" alt="image"></p>
-<h2 id="Java代码"><a href="#Java代码" class="headerlink" title="Java代码"></a>Java代码</h2><p>已translate为例，代码如下。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TranslateAnimation anim = <span class="keyword">new</span> TranslateAnimation(<span class="number">0f</span>,<span class="number">0f</span>,<span class="number">300f</span>,<span class="number">300f</span>);</span><br><span class="line">anim.setDuration(<span class="number">1000</span>);</span><br><span class="line">image.startAnimation(anim);</span><br></pre></td></tr></table></figure></p>
+<h2 id="Java代码"><a href="#Java代码" class="headerlink" title="Java代码"></a>Java代码</h2><p>已translate为例，代码如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TranslateAnimation anim = <span class="keyword">new</span> TranslateAnimation(<span class="number">0f</span>,<span class="number">0f</span>,<span class="number">300f</span>,<span class="number">300f</span>);</span><br><span class="line">anim.setDuration(<span class="number">1000</span>);</span><br><span class="line">image.startAnimation(anim);</span><br></pre></td></tr></table></figure>
 <p>下面给出各使用方法</p>
-<p><strong>translate</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TranslateAnimation(<span class="keyword">float</span> fromXDelta, <span class="keyword">float</span> toXDelta, <span class="keyword">float</span> fromYDelta,<span class="keyword">float</span> toYDelta)</span><br></pre></td></tr></table></figure></p>
-<p><strong>scale</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ScaleAnimation(<span class="keyword">float</span> fromX, <span class="keyword">float</span> toX, <span class="keyword">float</span> fromY, <span class="keyword">float</span> toY,<span class="keyword">float</span> pivotX, <span class="keyword">float</span> pivotY)</span><br></pre></td></tr></table></figure></p>
-<p><strong>rotate</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RotateAnimation(<span class="keyword">float</span> fromDegrees, <span class="keyword">float</span> toDegrees, <span class="keyword">float</span> pivotX, <span class="keyword">float</span> pivotY)</span><br></pre></td></tr></table></figure></p>
-<p><strong>alpha</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AlphaAnimation(<span class="keyword">float</span> fromAlpha, <span class="keyword">float</span> toAlpha)</span><br></pre></td></tr></table></figure></p>
-<p><strong>set</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AnimationSet anim = <span class="keyword">new</span> AnimationSet(<span class="keyword">this</span>, <span class="keyword">null</span>);</span><br><span class="line">anim.addAnimation(alpha);</span><br><span class="line">anim.addAnimation(rotate);</span><br><span class="line">...</span><br><span class="line">image.startAnimation(anim);</span><br></pre></td></tr></table></figure></p>
+<p><strong>translate</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TranslateAnimation(<span class="keyword">float</span> fromXDelta, <span class="keyword">float</span> toXDelta, <span class="keyword">float</span> fromYDelta,<span class="keyword">float</span> toYDelta)</span><br></pre></td></tr></table></figure>
+<p><strong>scale</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ScaleAnimation(<span class="keyword">float</span> fromX, <span class="keyword">float</span> toX, <span class="keyword">float</span> fromY, <span class="keyword">float</span> toY,<span class="keyword">float</span> pivotX, <span class="keyword">float</span> pivotY)</span><br></pre></td></tr></table></figure>
+<p><strong>rotate</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RotateAnimation(<span class="keyword">float</span> fromDegrees, <span class="keyword">float</span> toDegrees, <span class="keyword">float</span> pivotX, <span class="keyword">float</span> pivotY)</span><br></pre></td></tr></table></figure>
+<p><strong>alpha</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AlphaAnimation(<span class="keyword">float</span> fromAlpha, <span class="keyword">float</span> toAlpha)</span><br></pre></td></tr></table></figure>
+<p><strong>set</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AnimationSet anim = <span class="keyword">new</span> AnimationSet(<span class="keyword">this</span>, <span class="keyword">null</span>);</span><br><span class="line">anim.addAnimation(alpha);</span><br><span class="line">anim.addAnimation(rotate);</span><br><span class="line">...</span><br><span class="line">image.startAnimation(anim);</span><br></pre></td></tr></table></figure>
 <hr>
-<p>以上就是各个补间动画的基本使用方式，除了它们各自的属性，还有一些公共的属性方法，如下：<br>XML属性 | 含义<br>—|—<br>android:fromXDelta | x轴运动的起点<br>android:fromYDelta | y轴运动的起点<br>android:toXDelta | x轴运动的终点<br>android:toYDelta | y轴运动的终点</p>
+<p>以上就是各个补间动画的基本使用方式，除了它们各自的属性，还有一些公共的属性方法，如下：</p>
+<table>
+<thead>
+<tr>
+<th>XML属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android:fromXDelta</td>
+<td>x轴运动的起点</td>
+</tr>
+<tr>
+<td>android:fromYDelta</td>
+<td>y轴运动的起点</td>
+</tr>
+<tr>
+<td>android:toXDelta</td>
+<td>x轴运动的终点</td>
+</tr>
+<tr>
+<td>android:toYDelta</td>
+<td>y轴运动的终点</td>
+</tr>
+</tbody>
+</table>
 <table>
 <thead>
 <tr>
