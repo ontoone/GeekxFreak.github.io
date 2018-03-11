@@ -1,0 +1,715 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="动画," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="先来看下补间动画的定义：
+
+补间动画指的是做flash动画时，在两个关键帧中间需要做“补间动画”，才能实现图画的运动；插入补间动画后两个关键帧之间的插补帧是由计算机自动运算而得到的。
+
+Android中的补间动画我的理解是设定起始和结束的值、运动间隔和插值器(Interpolator)，产生的这么一个运动过程。补间动画分为四种变换过程，即平移(translate)、缩放(scale)、旋转(rot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android动画（一）：补间动画">
+<meta property="og:url" content="http://yoursite.com/2018/03/10/animation1/index.html">
+<meta property="og:site_name" content="Mansoul's Blog">
+<meta property="og:description" content="先来看下补间动画的定义：
+
+补间动画指的是做flash动画时，在两个关键帧中间需要做“补间动画”，才能实现图画的运动；插入补间动画后两个关键帧之间的插补帧是由计算机自动运算而得到的。
+
+Android中的补间动画我的理解是设定起始和结束的值、运动间隔和插值器(Interpolator)，产生的这么一个运动过程。补间动画分为四种变换过程，即平移(translate)、缩放(scale)、旋转(rot">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB5919f51a6e9ca172a8d7d6e98cd6fe5f?method=download&shareKey=22e545bc56f39ae44053ae6b5172cf37">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/WEB4e01fa1f8e95ae5067456f16b8817488?method=download&shareKey=4d1629be6d2b86b5a1e7433f27c4114e">
+<meta property="og:updated_time" content="2018-03-11T14:16:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android动画（一）：补间动画">
+<meta name="twitter:description" content="先来看下补间动画的定义：
+
+补间动画指的是做flash动画时，在两个关键帧中间需要做“补间动画”，才能实现图画的运动；插入补间动画后两个关键帧之间的插补帧是由计算机自动运算而得到的。
+
+Android中的补间动画我的理解是设定起始和结束的值、运动间隔和插值器(Interpolator)，产生的这么一个运动过程。补间动画分为四种变换过程，即平移(translate)、缩放(scale)、旋转(rot">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/WEB5919f51a6e9ca172a8d7d6e98cd6fe5f?method=download&shareKey=22e545bc56f39ae44053ae6b5172cf37">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Android动画（一）：补间动画 | Mansoul's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mansoul's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android动画（一）：补间动画
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-10T18:31:52+08:00" content="2018-03-10">
+              2018-03-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/03/10/animation1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/10/animation1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>先来看下补间动画的定义：</p>
+<blockquote>
+<p>补间动画指的是做flash动画时，在两个关键帧中间需要做“补间动画”，才能实现图画的运动；插入补间动画后两个关键帧之间的插补帧是由计算机自动运算而得到的。</p>
+</blockquote>
+<p>Android中的补间动画我的理解是设定起始和结束的值、运动间隔和插值器(Interpolator)，产生的这么一个运动过程。补间动画分为四种变换过程，即平移(translate)、缩放(scale)、旋转(rotate)、透明度(alpha)。</p>
+<p>在Android中补间动画的使用有两种方式，XML配置和Java代码实现。下面会配合示例讲解这2种方式的使用。</p>
+<h2 id="XML配置"><a href="#XML配置" class="headerlink" title="XML配置"></a>XML配置</h2><h3 id="平移-translate-、缩放-scale-、旋转-rotate-、透明度-alpha"><a href="#平移-translate-、缩放-scale-、旋转-rotate-、透明度-alpha" class="headerlink" title="平移(translate)、缩放(scale)、旋转(rotate)、透明度(alpha)"></a>平移(translate)、缩放(scale)、旋转(rotate)、透明度(alpha)</h3><p><strong>注意：这些动画都是以控件的父布局为坐标系，在其上进行位移的运动</strong></p>
+<p>以translate为例</p>
+<a id="more"></a>
+<p><strong>1.创建动画xml文件，其路基为res/anim/translate.xml</strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">translate</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">android:duration</span>=<span class="string">"1000"</span></span><br><span class="line">    <span class="attr">android:fromXDelta</span>=<span class="string">"0"</span></span><br><span class="line">    <span class="attr">android:fromYDelta</span>=<span class="string">"0"</span></span><br><span class="line">    <span class="attr">android:toXDelta</span>=<span class="string">"300"</span></span><br><span class="line">    <span class="attr">android:toYDelta</span>=<span class="string">"300"</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>2.Java代码中使用配置的xml</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ImageView image = findViewById(R.id.image);</span><br><span class="line">Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.translate);</span><br><span class="line">image.startAnimation(animation);</span><br></pre></td></tr></table></figure></p>
+<p>红色为根布局，蓝色背景为imageview的父布局，可以看到动画是以父布局为坐标轴进行移动的。还有个细节可以看到view移动后给view设置的点击事件还在原始位置，即只是view的内容进行了位移，view本身没有被移动。这里直接给出结论就是<strong>补间动画不改变view的位置，只是view的内容被移动</strong>，具体原因这里不在展开，想了解的童鞋可自行了解。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB5919f51a6e9ca172a8d7d6e98cd6fe5f?method=download&amp;shareKey=22e545bc56f39ae44053ae6b5172cf37" alt="image"></p>
+<p>这里就给出translate的示例，scale、rotate、alpha使用方法和translate类似，只是xml配置属性不同，下面给出所有xml配置属性，大家可以自行尝试。</p>
+<p><strong>translate</strong><br>XML属性 | 含义<br>—|—<br>android:fromXDelta | x轴运动的起点<br>android:fromYDelta | y轴运动的起点<br>android:toXDelta | x轴运动的终点<br>android:toYDelta | y轴运动的终点</p>
+<p><strong>scale</strong><br>XML属性 | 含义<br>—|—<br>android:fromXScale | 开始x轴缩放比例，1.0表示无变化<br>android:toXScale     | 结束x轴缩放比例<br>androd:fromYScale | 开始y轴缩放比例<br>android:toYScale | 结束y轴缩放比例<br>android:pivotX | 缩放起点x轴坐标<br>android:pivotY | 缩放起点y轴坐标</p>
+<blockquote>
+<p>privot：取值可以是数值（50）、百分数（50%）、百分数p（50%p），当取值为数值时，缩放起点为View左上角坐标加具体数值像素，当取值为百分数时，表示在当前View左上角坐加上View宽度的具体百分比，当取值为百分数p时，表示在View左上角坐标加上父控件宽度的具体百分比</p>
+</blockquote>
+<p><strong>rotate</strong><br>XML属性 | 含义<br>—|—<br>android:fromDegress | 旋转开始角度，正代表顺时针度数，负代表逆时针度数<br>android:toDegress | 旋转结束角度<br>android:pivotX | 旋转起点x轴坐标<br>android:pivotY | 旋转起点y轴坐标</p>
+<p><strong>alpha</strong><br>XML属性 | 含义<br>—|—<br>android:fromAlpha | 开始透明度，范围0.0(全透明)~1.0(不透明)<br>androdi:toAlpha | 结束透明度</p>
+<h3 id="集合动画（set）"><a href="#集合动画（set）" class="headerlink" title="集合动画（set）"></a>集合动画（set）</h3><p>顾名思义就是动画放在一起使用，使用和上面单个动画一样，如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">android:duration</span>=<span class="string">"1000"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">alpha</span></span><br><span class="line">        <span class="attr">android:fromAlpha</span>=<span class="string">"0.2"</span></span><br><span class="line">        <span class="attr">android:toAlpha</span>=<span class="string">"1"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rotate</span></span><br><span class="line">        <span class="attr">android:fromDegrees</span>=<span class="string">"0"</span></span><br><span class="line">        <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></span><br><span class="line">        <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></span><br><span class="line">        <span class="attr">android:toDegrees</span>=<span class="string">"360"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scale</span></span><br><span class="line">        <span class="attr">android:fromXScale</span>=<span class="string">"0.5"</span></span><br><span class="line">        <span class="attr">android:fromYScale</span>=<span class="string">"0.5"</span></span><br><span class="line">        <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></span><br><span class="line">        <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></span><br><span class="line">        <span class="attr">android:toXScale</span>=<span class="string">"1.0"</span></span><br><span class="line">        <span class="attr">android:toYScale</span>=<span class="string">"1.0"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">translate</span></span><br><span class="line">        <span class="attr">android:fromXDelta</span>=<span class="string">"0"</span></span><br><span class="line">        <span class="attr">android:fromYDelta</span>=<span class="string">"0"</span></span><br><span class="line">        <span class="attr">android:toXDelta</span>=<span class="string">"300"</span></span><br><span class="line">        <span class="attr">android:toYDelta</span>=<span class="string">"300"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>代码中使用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ImageView image = findViewById(R.id.image);</span><br><span class="line">Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.set);</span><br><span class="line">image.startAnimation(animation);</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/WEB4e01fa1f8e95ae5067456f16b8817488?method=download&amp;shareKey=4d1629be6d2b86b5a1e7433f27c4114e" alt="image"></p>
+<h2 id="Java代码"><a href="#Java代码" class="headerlink" title="Java代码"></a>Java代码</h2><p>已translate为例，代码如下。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TranslateAnimation anim = <span class="keyword">new</span> TranslateAnimation(<span class="number">0f</span>,<span class="number">0f</span>,<span class="number">300f</span>,<span class="number">300f</span>);</span><br><span class="line">anim.setDuration(<span class="number">1000</span>);</span><br><span class="line">image.startAnimation(anim);</span><br></pre></td></tr></table></figure></p>
+<p>下面给出各使用方法</p>
+<p><strong>translate</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TranslateAnimation(<span class="keyword">float</span> fromXDelta, <span class="keyword">float</span> toXDelta, <span class="keyword">float</span> fromYDelta,<span class="keyword">float</span> toYDelta)</span><br></pre></td></tr></table></figure></p>
+<p><strong>scale</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ScaleAnimation(<span class="keyword">float</span> fromX, <span class="keyword">float</span> toX, <span class="keyword">float</span> fromY, <span class="keyword">float</span> toY,<span class="keyword">float</span> pivotX, <span class="keyword">float</span> pivotY)</span><br></pre></td></tr></table></figure></p>
+<p><strong>rotate</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RotateAnimation(<span class="keyword">float</span> fromDegrees, <span class="keyword">float</span> toDegrees, <span class="keyword">float</span> pivotX, <span class="keyword">float</span> pivotY)</span><br></pre></td></tr></table></figure></p>
+<p><strong>alpha</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AlphaAnimation(<span class="keyword">float</span> fromAlpha, <span class="keyword">float</span> toAlpha)</span><br></pre></td></tr></table></figure></p>
+<p><strong>set</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AnimationSet anim = <span class="keyword">new</span> AnimationSet(<span class="keyword">this</span>, <span class="keyword">null</span>);</span><br><span class="line">anim.addAnimation(alpha);</span><br><span class="line">anim.addAnimation(rotate);</span><br><span class="line">...</span><br><span class="line">image.startAnimation(anim);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>以上就是各个补间动画的基本使用方式，除了它们各自的属性，还有一些公共的属性方法，如下：<br>XML属性 | 含义<br>—|—<br>android:fromXDelta | x轴运动的起点<br>android:fromYDelta | y轴运动的起点<br>android:toXDelta | x轴运动的终点<br>android:toYDelta | y轴运动的终点</p>
+<table>
+<thead>
+<tr>
+<th>JAVA方法</th>
+<th>XML属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>setDuration(long)</td>
+<td>android:duration</td>
+<td>动画持续时间，单位为毫秒</td>
+</tr>
+<tr>
+<td>setFillAfter(boolean)</td>
+<td>android:fillAfter</td>
+<td>动画结束时控件是否保持动画最后状态</td>
+</tr>
+<tr>
+<td>setFillBefore(boolean)</td>
+<td>android:fillBefore</td>
+<td>动画结束时控件是否还原到开始动画前的状态</td>
+</tr>
+<tr>
+<td>setFillEnable(boolean)</td>
+<td>android:fillEnable(boolean)</td>
+<td>与android:fillBefore效果相同</td>
+</tr>
+<tr>
+<td>setInterpolator(boolean)</td>
+<td>android:interpolator</td>
+<td>设置插值器（指定动画效果）</td>
+</tr>
+<tr>
+<td>setRepeatCount(int)</td>
+<td>android:repeatCount</td>
+<td>重复次数</td>
+</tr>
+<tr>
+<td>setRepeatMode(int)</td>
+<td>android:repeatMode</td>
+<td>重复类型：reverse倒序回放、restart从头播放</td>
+</tr>
+<tr>
+<td>setStartOffset(long)</td>
+<td>android:startOffset</td>
+<td>调用start函数后等待开行运行的时间，单位为毫秒</td>
+</tr>
+<tr>
+<td>setZadjustment(int)</td>
+<td>android:zAdjustment</td>
+<td>表示被设置动画的内容运行时在Z轴的位置(top/bottom/normal)，默认为normal</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>同时设置 setFillAfter 和 setFillBefore(setFillEnable) 结果已 setFillAfter 为准剩下的无效</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/动画/" rel="tag">#动画</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/18/singleton/" rel="next" title="JAVA设计模式之单例模式">
+                <i class="fa fa-chevron-left"></i> JAVA设计模式之单例模式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/03/10/animation1/"
+           data-title="Android动画（一）：补间动画" data-url="http://yoursite.com/2018/03/10/animation1/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Mansoul" />
+          <p class="site-author-name" itemprop="name">Mansoul</p>
+          <p class="site-description motion-element" itemprop="description">将来的一切都要靠自己努力去揭晓</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mansoul1994" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="#" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#XML配置"><span class="nav-number">1.</span> <span class="nav-text">XML配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#平移-translate-、缩放-scale-、旋转-rotate-、透明度-alpha"><span class="nav-number">1.1.</span> <span class="nav-text">平移(translate)、缩放(scale)、旋转(rotate)、透明度(alpha)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合动画（set）"><span class="nav-number">1.2.</span> <span class="nav-text">集合动画（set）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java代码"><span class="nav-number">2.</span> <span class="nav-text">Java代码</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mansoul</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"mansoul"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
